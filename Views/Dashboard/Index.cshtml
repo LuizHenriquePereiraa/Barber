@@ -1,0 +1,106 @@
+﻿<h2>Dashboard BarberTech</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        <div class="card text-white bg-dark mb-3">
+
+            <div class="card-body">
+
+                <h5>Total Agendamentos</h5>
+
+                <h2>@ViewBag.TotalAgendamentos</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-white bg-primary mb-3">
+
+            <div class="card-body">
+
+                <h5>Cortes</h5>
+
+                <h2>@ViewBag.TotalCortes</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-white bg-success mb-3">
+
+            <div class="card-body">
+
+                <h5>Barbas</h5>
+
+                <h2>@ViewBag.TotalBarbas</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card text-white bg-warning mb-3">
+
+            <div class="card-body">
+
+                <h5>Sobrancelha</h5>
+
+                <h2>@ViewBag.TotalSobrancelha</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3>Próximos Agendamentos</h3>
+
+    <table class="table table-striped">
+
+        <thead>
+
+            <tr>
+
+                <th>Cliente</th>
+
+                <th>Serviço</th>
+
+                <th>Data/Hora</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in ViewBag.ProximosAgendamentos)
+            {
+                <tr>
+
+                    <td>@item.ClienteNome</td>
+
+                    <td>@item.Servico</td>
+
+                    <td>@item.DataHora</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BarberTech.Models
+﻿namespace BarberTech.Models
 {
     public class Agendamento
     {

@@ -1,0 +1,52 @@
+﻿@model BarberTech.Models.Agendamento
+
+<h2>Editar Agendamento</h2>
+
+<form asp-action="Editar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+
+        <label>Nome do Cliente</label>
+
+        <input asp-for="ClienteNome"
+               class="form-control" />
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Serviço</label>
+
+        <select asp-for="Servico"
+                class="form-control">
+
+            <option value="Corte">Corte</option>
+
+            <option value="Barba">Barba</option>
+
+            <option value="Sobrancelha">Sobrancelha</option>
+
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Data e Hora</label>
+
+        <input asp-for="DataHora"
+               type="datetime-local"
+               class="form-control" />
+
+    </div>
+
+    <button type="submit"
+            class="btn btn-warning">
+
+        Salvar Alterações
+
+    </button>
+
+</form>

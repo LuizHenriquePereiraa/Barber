@@ -19,26 +19,18 @@ namespace BarberTech.Controllers
         }
 
         [HttpPost]
-        public IActionResult Salvar(string ClienteNome, string Servico, DateTime DataHora)
+        public IActionResult Salvar(Agendamento agendamento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Agendamento novo = new Agendamento();
-
-                novo.ClienteNome = ClienteNome;
-                novo.Servico = Servico;
-                novo.DataHora = DataHora;
-
-                _context.Agendamentos.Add(novo);
+                _context.Agendamentos.Add(agendamento);
 
                 _context.SaveChanges();
 
                 return RedirectToAction("Lista");
             }
-            catch (Exception ex)
-            {
-                return Content(ex.ToString());
-            }
+
+            return View("Index");
         }
 
         public IActionResult Lista()
@@ -46,6 +38,35 @@ namespace BarberTech.Controllers
             var lista = _context.Agendamentos.ToList();
 
             return View(lista);
+        }
+    public IActionResult Excluir(int id)
+        {
+            var agendamento = _context.Agendamentos.Find(id);
+
+            if (agendamento != null)
+            {
+                _context.Agendamentos.Remove(agendamento);
+
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Lista");
+        }
+        public IActionResult Editar(int id)
+        {
+            var agendamento = _context.Agendamentos.Find(id);
+
+            return View(agendamento);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Agendamento agendamento)
+        {
+            _context.Agendamentos.Update(agendamento);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Lista");
         }
     }
 }
